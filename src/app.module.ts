@@ -1,11 +1,17 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { SharedModule } from './shared/shared.module';
+import { ConfigurationService } from './shared/config/config.service';
 
 @Module({
   imports: [SharedModule],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
-export class AppModule {}
+export class AppModule {
+  static port: number | string;
+  static isDev: boolean;
+  constructor(private readonly _configurationService: ConfigurationService) {
+    AppModule.port = _configurationService.port;
+    AppModule.isDev = _configurationService.isDevelopment;
+  }
+}
