@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 import { SharedModule } from './shared/shared.module';
 import { ConfigurationService } from './shared/config/config.service';
 import { AuthModule } from './auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [SharedModule, AuthModule],
